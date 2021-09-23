@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 4rem;
+      background-color: lightsteelblue;
+      color: white;
+      font-weight: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    button {
+      height: 4rem;
+      width: 10rem;
+      font-size: large;
+      margin: 1.5rem;
+      border-radius: 5px;
+    }
+
+    #userWeapon {
+      color: darkslateblue;
+    }
+
+    #computerWeapon {
+      color: darkslategray;
+    }
+
+    #userChoice {
+      background-color: darkslateblue;
+      color: white;
+    }
+    #computerChoice {
+      background-color: darkslategray;
+      color: white;
+    }
+
+    #checkWinner {
+      background-color: honeydew;
+    }
+    #result {
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      font-size: 5rem;
+      color: brown;
+    }
+  </style>
+  <body>
+    <button id="userChoice" onclick="userInput()">Choose Your Weapon</button>
+    <div id="userWeapon"></div>
+    <button id="computerChoice" onclick="computerGetWeapon()">
+      Computer's Weapon
+    </button>
+    <div id="computerWeapon"></div>
+    <button id="checkWinner" onclick="result()">See Who Wins</button>
+    <div id="result"></div>
+  </body>
+  <script>
+    // Rock, Paper, or Scissors
+    const choices = ["rock", "paper", "scissors"];
+
+    let randomSelection = function () {
+      return choices[Math.floor(Math.random() * choices.length)];
+    };
+    function userInput() {
+      let userSelection = prompt(
+        "Please choose either rock, paper, or scissors to begin game: "
+      );
+      {
+        document.getElementById("userWeapon").innerHTML = userSelection;
+      }
+    }
+
+    function computerGetWeapon() {
+      if (document.getElementById("userWeapon") != null) {
+        document.getElementById(
+          "computerWeapon"
+        ).innerHTML = `${randomSelection()}`;
+      }
+    }
+    function result() {
+      if (
+        document.getElementById("userWeapon").innerHTML === "rock" &&
+        document.getElementById("computerWeapon").innerHTML === "paper"
+      ) {
+        document.getElementById("result").innerHTML = "You Lose!";
+      } else if (
+        document.getElementById("userWeapon").innerHTML === "paper" &&
+        document.getElementById("computerWeapon").innerHTML === "rock"
+      ) {
+        document.getElementById("result").innerHTML = "You Win!";
+      } else if (
+        document.getElementById("userWeapon").innerHTML === "scissors" &&
+        document.getElementById("computerWeapon").innerHTML === "rock"
+      ) {
+        document.getElementById("result").innerHTML = "You Lose!";
+      } else if (
+        document.getElementById("userWeapon").innerHTML === "rock" &&
+        document.getElementById("computerWeapon").innerHTML === "scissors"
+      ) {
+        document.getElementById("result").innerHTML = "You Win!";
+      } else if (
+        document.getElementById("userWeapon").innerHTML === "paper" &&
+        document.getElementById("computerWeapon").innerHTML === "scissors"
+      ) {
+        document.getElementById("result").innerHTML = "You Lose!";
+      } else if (
+        document.getElementById("userWeapon").innerHTML === "scissors" &&
+        document.getElementById("computerWeapon").innerHTML === "paper"
+      ) {
+        document.getElementById("result").innerHTML = "You Win!";
+      } else if (
+        document.getElementById("userWeapon").innerHTML ===
+        document.getElementById("computerWeapon").innerHTML
+      ) {
+        document.getElementById("result").innerHTML = "Draw!";
+      }
+    }
+  </script>
+</html>
